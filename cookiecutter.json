@@ -1,3 +1,4 @@
 {
-  "project_name": "django_project"
+  "project_name": "django_project",
+  "django_dev_port": "8000"
 }
