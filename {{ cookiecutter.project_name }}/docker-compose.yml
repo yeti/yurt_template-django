@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/server
+    env_file:
+      - ./envs/dev.env
+    depends_on:
+      - db
+  db:
+    image: postgres:11-alpine
+    env_file:
+      - ./envs/dev.env

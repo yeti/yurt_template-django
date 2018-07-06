@@ -1,0 +1,12 @@
+FROM python:3.6.6-alpine3.6
+COPY . /server
+WORKDIR /server
+RUN apk --update add g++ \
+    make \
+    postgresql-dev \
+    && \
+    pip install -r requirements.txt
+EXPOSE 8000
+VOLUME ["/server"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
