@@ -1,3 +1,4 @@
 *.pyc
 /envs/*
 !/envs/dev.env
+!/envs/remote.env

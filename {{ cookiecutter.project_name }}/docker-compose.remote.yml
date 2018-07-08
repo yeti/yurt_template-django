@@ -1,0 +1,36 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./django_app
+      dockerfile: Dockerfile.remote
+    volumes:
+      - runtime:/tmp
+      - static:/server/static
+    env_file:
+      - ./envs/remote.env
+    depends_on:
+      - db
+    ports:
+      - {{ cookiecutter.django_dev_port }}:{{ cookiecutter.django_dev_port }}
+  db:
+    image: postgres:11-alpine
+    env_file:
+      - ./envs/remote.env
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    volumes:
+      - runtime:/tmp
+      - static:/static
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - ./envs/remote.env
+volumes:
+  runtime:
+  static:
