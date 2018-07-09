@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./django_app:/server
-      - /tmp:/tmp
     env_file:
       - ./envs/dev.env
     depends_on:
