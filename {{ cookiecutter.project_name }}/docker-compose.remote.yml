@@ -1,3 +1,9 @@
+##
+# DO NOT REMOVE THIS FILE
+# This file is used as a template for new docker-compose files
+#
+# However, you can add services to this file as needed.
+##
 version: "3"
 services:
   app:
@@ -11,8 +17,6 @@ services:
       - ./envs/remote.env
     depends_on:
       - db
-    ports:
-      - {{ cookiecutter.django_dev_port }}:{{ cookiecutter.django_dev_port }}
   db:
     image: postgres:11-alpine
     env_file:
