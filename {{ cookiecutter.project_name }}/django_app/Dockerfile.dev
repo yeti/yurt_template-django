@@ -1,4 +1,5 @@
 FROM python:3.6.6-alpine3.6
+ENV PYTHONUNBUFFERED 1
 COPY . /server
 WORKDIR /server
 RUN apk --update add g++ \
